@@ -1,0 +1,61 @@
+"""
+WHY FUNCTIONS EXIST: MODULARITY AND SCALABILITY
+
+Functions allow large programs to be built from small,
+focused pieces. Each function handles one responsibility.
+"""
+
+def validate_email(email):
+    return "@" in email
+
+def hash_password(password):
+    return "hashed_" + password
+
+def save_to_database(user_data):
+    print(f"Saving {user_data} to database...")
+
+def register_user(name, email, password):
+    if not validate_email(email):
+        return "Invalid email"
+
+    hashed = hash_password(password)
+
+    user_data = {
+        "name": name,
+        "email": email,
+        "password": hashed
+    }
+
+    save_to_database(user_data)
+    return "Registration successful"
+
+
+print(register_user("Alice", "alice@example.com", "secret123"))
+
+print("\n" + "=" * 50)
+
+# Adding a new feature requires very little change.
+
+def send_welcome_email(email):
+    print(f"Sending welcome email to {email}...")
+
+def register_user_with_email(name, email, password):
+    result = register_user(name, email, password)
+
+    if result == "Registration successful":
+        send_welcome_email(email)
+
+    return result
+
+
+print(register_user_with_email(
+    "Bob",
+    "bob@example.com",
+    "password123"
+))
+
+"""
+Benefit:
+Each function does one job. As the application grows,
+new features can be added without rewriting existing code.
+"""
