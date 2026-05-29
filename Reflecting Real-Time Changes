@@ -1,0 +1,76 @@
+"""
+WHY FUNCTIONS EXIST
+
+2. Reflecting Real-Time Changes
+A function centralizes logic. When the function changes,
+every call automatically uses the updated behavior.
+"""
+
+def calculate_total(subtotal):
+    tax = subtotal * 0.08
+    return subtotal + tax
+
+print(calculate_total(100))  # 108
+print(calculate_total(250))  # 270
+print(calculate_total(75))   # 81
+
+# Tax rate changes from 8% to 10%
+
+def calculate_total(subtotal):
+    tax = subtotal * 0.10
+    return subtotal + tax
+
+print(calculate_total(100))  # 110
+print(calculate_total(250))  # 275
+print(calculate_total(75))   # 82.5
+
+"""
+Benefit:
+Update the logic once and all future calls use the new rule.
+"""
+
+print("\n" + "=" * 50)
+
+"""
+3. Organization and Variable Tracking
+
+Functions create local scope, keeping variables organized
+and preventing accidental overwrites.
+"""
+
+# Without functions
+
+name = "Alice"
+age = 30
+email = "alice@example.com"
+
+name = "Bob"
+age = 25
+email = "bob@example.com"
+
+print(name, age, email)
+
+# Alice's data has been overwritten.
+
+print("\n" + "=" * 50)
+
+# With functions
+
+def create_user(name, age, email):
+    return {
+        "name": name,
+        "age": age,
+        "email": email
+    }
+
+alice = create_user("Alice", 30, "alice@example.com")
+bob = create_user("Bob", 25, "bob@example.com")
+
+print(alice)
+print(bob)
+
+"""
+Benefit:
+Each function call gets its own workspace, making code
+easier to manage and less prone to mistakes.
+"""
