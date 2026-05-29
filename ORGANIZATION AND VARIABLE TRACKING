@@ -1,0 +1,48 @@
+"""
+WHY FUNCTIONS EXIST: ORGANIZATION AND VARIABLE TRACKING
+
+Functions create local scope. Variables inside a function
+exist only while that function is running, helping keep
+data organized and preventing accidental overwrites.
+"""
+
+# Without functions
+
+name = "Alice"
+age = 30
+email = "alice@example.com"
+
+name = "Bob"
+age = 25
+email = "bob@example.com"
+
+print(name, age, email)
+
+"""
+Alice's data was overwritten because the same variables
+were reused in the global scope.
+"""
+
+print("\n" + "=" * 50)
+
+# With functions
+
+def create_user(name, age, email):
+    user_info = {
+        "name": name,
+        "age": age,
+        "email": email
+    }
+    return user_info
+
+alice = create_user("Alice", 30, "alice@example.com")
+bob = create_user("Bob", 25, "bob@example.com")
+
+print(alice)
+print(bob)
+
+"""
+Benefit:
+Each function call has its own workspace, making it clear
+which variables belong together and reducing mistakes.
+"""
