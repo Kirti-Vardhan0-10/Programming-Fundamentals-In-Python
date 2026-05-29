@@ -1,0 +1,48 @@
+"""
+WHY FUNCTIONS EXIST: PREVENTING CODE DUPLICATION
+
+Without functions, the same logic must be written repeatedly.
+With functions, we write the logic once and reuse it.
+"""
+
+# Without functions
+
+subtotal1 = 100
+tax1 = subtotal1 * 0.08
+total1 = subtotal1 + tax1
+print(f"Order 1: ${total1}")
+
+subtotal2 = 250
+tax2 = subtotal2 * 0.08
+total2 = subtotal2 + tax2
+print(f"Order 2: ${total2}")
+
+subtotal3 = 75
+tax3 = subtotal3 * 0.08
+total3 = subtotal3 + tax3
+print(f"Order 3: ${total3}")
+
+"""
+The tax calculation is repeated for every order.
+If the tax rate changes, every copy must be updated.
+"""
+
+print("\n" + "=" * 50)
+
+# With functions
+
+def calculate_total(subtotal):
+    tax = subtotal * 0.08
+    return subtotal + tax
+
+print(f"Order 1: ${calculate_total(100)}")
+print(f"Order 2: ${calculate_total(250)}")
+print(f"Order 3: ${calculate_total(75)}")
+
+"""
+Benefits:
+- Less code
+- Easier to read
+- Easier to maintain
+- Update the tax rate in one place only
+"""
